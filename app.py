@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, send_from_directory
-import cv2
 from zipfile import ZipFile
-import keras
+import cv2
+#import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import InputLayer, Dense, Conv2D, MaxPool2D, Flatten
 from tensorflow.keras.optimizers import Adam
@@ -27,6 +27,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer=Adam(learning_rate=0.001), 
               loss='binary_crossentropy', 
               metrics=['acc'])
+
 model.load_weights('static/model.h5')
 
 
@@ -39,7 +40,7 @@ def man():
     return render_template('index.html')
 
 
-@app.route('/home', methods=['POST'])
+@app.route('/hasilprediksi', methods=['POST'])
 def home():
     global COUNT
     img = request.files['image']
@@ -52,11 +53,10 @@ def home():
     img_arr = img_arr.reshape(1, 150,150,3)
     prediction = model.predict(img_arr)
 
-    print(prediction)
     pre = round(prediction[0,0], 1)
     preds = np.array([pre])
     COUNT += 1
-    return render_template('prediction.html', data=preds)
+    return render_template('prediksi.html', data=preds)
 
 
 @app.route('/load_img')
