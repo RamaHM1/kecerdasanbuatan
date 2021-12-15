@@ -90,6 +90,9 @@ h3 {
 .contdown {
     position: fixed;
     left: 0;
+    height: 150px;
+    padding-top: 50px;
+    margin-bottom: 25px;
     bottom: 0;
     width: 100%;
     background-color: grey;
