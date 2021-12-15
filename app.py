@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, send_from_directory
 import cv2
+from zipfile import ZipFile
 import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import InputLayer, Dense, Conv2D, MaxPool2D, Flatten
 from tensorflow.keras.optimizers import Adam
 import numpy as np
+
+ZipFile("static/model.zip").extractall("static/")
 
 model = Sequential()
 
