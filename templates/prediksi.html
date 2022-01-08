@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <link href="static/style.css" rel="stylesheet">
     </head>
-    <body>
+    <body onload="function()">
         <center>
             <div class='cont'>
                 
@@ -28,4 +28,12 @@
         </center>
         
     </body>
+    <script>
+        window.onload = function() {
+            if(!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+    <script>
 </html>
