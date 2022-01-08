@@ -5,13 +5,7 @@
         <meta charset="UTF-8">
         <link href="static/style.css" rel="stylesheet">
     </head>
-    <body>
-        <script lang="javascript">
-            const reloadUsingLocationHash = () => {
-              window.location.hash = "reload";
-            }
-            window.onload = reloadUsingLocationHash();
-        </script>
+    <body onload="myFunction()">
         <center>
             <div class='cont'>
                 
@@ -34,4 +28,12 @@
         </center>
         
     </body>
+    <script>
+        function myFunction() {
+            if(!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+    </script>
 </html>
